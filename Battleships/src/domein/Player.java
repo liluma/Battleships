@@ -2,17 +2,22 @@ package domein;
 
 public class Player {
     private String playerName;
+    private Ship ship;
     private Tile[][] playingField;
     private Tile[][] shootingField;
+    private final int STARTX = 5;
+    private final int STARTY = 5;
     
     public Player(){
         setPlayerName("defaultPlayer");
+        ship = new Ship();
         initFieldPlayer();
         initShootingField();
     }
         
     public Player(String name){
         setPlayerName(name);
+        ship = new Ship();
         initFieldPlayer();
         initShootingField();
     }
@@ -24,6 +29,7 @@ public class Player {
                 playingField[x][y] = new Tile(x, y);
             }
         }
+        playingField[STARTX][STARTY].setEntity(ship);
     }
     
     private void initShootingField(){

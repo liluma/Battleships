@@ -2,11 +2,16 @@ package domein;
 
 public class Tile {
     private int x, y;
-    private Obstacle obstacle;
+    private Entity entity;
     
     public Tile(int x, int y){
         setX(x);
         setY(y);
+    }
+    
+    public void setEntity(Entity ent){
+        this.entity = ent;
+        System.out.println("adding ship");
     }
     
     private void setX(int x){
@@ -19,9 +24,9 @@ public class Tile {
     
     @Override
     public String toString(){
-        if(obstacle == null)
+        if(entity == null)
             return "~";
-        
-        else return obstacle.toString();
+        else 
+            return entity.toString();
     }
 }

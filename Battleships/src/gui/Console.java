@@ -14,6 +14,10 @@ public class Console {
         do{
             System.out.println("running game");
             System.out.println(domCntrl.getOverview());
+            while(domCntrl.movesPlanned()){
+                domCntrl.moveEntities();
+                System.out.println(domCntrl.getOverview());
+            }
         }while(domCntrl.gameRunning());
     }
 }

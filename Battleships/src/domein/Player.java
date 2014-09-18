@@ -1,5 +1,7 @@
 package domein;
 
+import java.util.ArrayList;
+
 public class Player {
     private String playerName;
     private Ship ship;
@@ -10,15 +12,20 @@ public class Player {
     
     public Player(){
         setPlayerName("defaultPlayer");
-        ship = new Ship();
+        ArrayList<Tile> path = new ArrayList<Tile>();
         initFieldPlayer();
+        path.add(playingField[4][4]);
+        path.add(playingField[3][4]);
+        path.add(playingField[2][3]);
+        ship = new Ship(playingField[STARTX][STARTY], path);
+        placeShipOnField();
         initShootingField();
     }
         
     public Player(String name){
         setPlayerName(name);
-        ship = new Ship();
         initFieldPlayer();
+        ship = new Ship();
         initShootingField();
     }
     
@@ -29,7 +36,6 @@ public class Player {
                 playingField[x][y] = new Tile(x, y);
             }
         }
-        playingField[STARTX][STARTY].setEntity(ship);
     }
     
     private void initShootingField(){
@@ -39,6 +45,11 @@ public class Player {
                 shootingField[x][y] = new Tile(x, y);
             }
         }
+    }
+    
+    private void placeShipOnField(){
+        playingField[STARTX][STARTY].setEntity(ship);
+        ship.setCurrentTile(playingField[STARTX][STARTY]);
     }
     
     @Override
@@ -67,5 +78,13 @@ public class Player {
     
     private void setPlayerName(String value){
         this.playerName = value;
+    }
+    
+    public boolean movesPlanned(){
+        return ship.movesPlanned();
+    }
+    
+    public void moveEntity(){
+        ship.moveEntity();
     }
 }

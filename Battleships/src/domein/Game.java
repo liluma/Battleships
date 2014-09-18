@@ -33,6 +33,18 @@ public class Game {
         return builder.toString();
     }
     
+    public boolean movesPlanned(){
+        return player1.movesPlanned();
+    }
+    
+    public void moveEntities(){
+        if(player1.movesPlanned())
+            player1.moveEntity();
+        
+        if(player2.movesPlanned())
+            player2.moveEntity();
+    }
+    
     public boolean getPlaying(){
         return playing;
     }

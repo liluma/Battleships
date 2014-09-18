@@ -11,6 +11,14 @@ public class DomeinController {
         return game.getPlaying();
     }
     
+    public boolean movesPlanned(){
+        return game.movesPlanned();
+    }
+    
+    public void moveEntities(){
+        game.moveEntities();
+    }
+    
     public String getOverview(){
         return game.getStringRep();
     }

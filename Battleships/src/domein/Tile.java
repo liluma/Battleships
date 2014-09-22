@@ -11,7 +11,7 @@ public class Tile {
     
     public void setEntity(Entity ent){
         this.entity = ent;
-        System.out.println("adding ship");
+        //System.out.println("adding ship");
     }
     
     private void setX(int x){
